@@ -1,0 +1,12 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">{{ appTitle }}</a>
+    <nav>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/login" *ngIf="!user">Login</a></li>
+        <li><a href="" *ngIf="user" (click)="logout()">Abmelden</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
