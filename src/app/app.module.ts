@@ -14,11 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
-import { OrdersService } from "./shared/orders.service";
 import { FormsComponent } from './forms/forms.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { ShowComponent } from './nz/show/show.component';
-import { DetailsComponent } from './nz/show/details/details.component';
 import { HttpClientModule} from '@angular/common/http';
 
 
@@ -31,8 +28,6 @@ import { HttpClientModule} from '@angular/common/http';
     RegistrationComponent,
     LoginComponent,
     FormsComponent,
-    ShowComponent,
-    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +41,6 @@ import { HttpClientModule} from '@angular/common/http';
     AngularFireDatabaseModule,
     HttpClientModule
     ],
-  providers: [OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, userData } from '../auth/auth.service';
 import { Router } from '@angular/router';
-import { UserDataService } from "../shared/user-data.service";
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { reject } from 'q';
@@ -24,7 +23,6 @@ export class HomeComponent implements OnInit {
   readonly ROOT_URL = 'http://localhost:8080/rest/process-definition/key/redcross/start';
   constructor(private auth: AuthService,
     private router: Router,
-    private userDataService: UserDataService,
     private firestore: AngularFirestore,
     private http: HttpClient) {
   }
