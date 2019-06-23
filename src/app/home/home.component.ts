@@ -41,49 +41,24 @@ export class HomeComponent implements OnInit {
 
 
   }
-
+  //führt zu der Login-Seite
   login() {
     this.router.navigate(['/login']);
   }
 
+  //Loggt den Benutzer aus
   logout() {
     this.auth.logout();
   }
 
-
+  //erhält die Benutzerdaten
   getUserData(userUid: string) {
     this.auth.getUserData(this.user.uid).subscribe(data => {
       this.userData = data; if (this.userData.role != "nzma") { this.logout(); }
     });
   }
 
-  updateUserData(frm) {
-    this.firestore.collection("Users").doc(frm.value.uid).update(frm.value).then(res => { }, err => reject(err));
-    this.startProcess(frm.value.uid);
-    //add(frm.value).then(res => {}, err => reject(err));
-  }
-
-  startProcess(userUid) {
-    this.postData = {
-      "variables": {
-        "userId": {
-          "value": userUid,
-          "type": "String"
-        }
-      },
-      "startInstructions": [
-        {
-          "type": "startBeforeActivity",
-          "activityId": "StartEvent"
-        }
-      ],
-      "businessKey": ""
-    }
-    this.http.post(this.ROOT_URL, this.postData).toPromise().then(data => {
-      console.log(data);
-    })
-  }
-
+  //ermittelt alle verifizierten Kunden
   getAllUser() {
 
     this.firestore.collection("Users", ref => ref.where("checked", "==", true)).snapshotChanges().subscribe(res =>(this.allUsers = res));
